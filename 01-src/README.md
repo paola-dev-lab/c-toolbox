@@ -16,20 +16,28 @@ Il sert notamment de fondation pour la construction d’outils comme **csvgrep**
 ## Exemple
 
 ```c
-char *champ = csv_get_field("Alice,30,Paris", ',', 1);
-printf("%s\n", champ); // 30
-free(champ);
+#include <stdio.h>
+#include "ctools.h"
+
+int main(void)
+{
+    char *champ = csv_get_field("Alice,30,Paris", ',', 1);
+    printf("%s\n", champ); // 30
+    free(champ);
+}
 ```
 
 ## Structure du projet
+```
 c-tools
 ├── src
 ├── include
 ├── tests
 ├── Makefile
 └── README.md
+```
 
 ## Objectifs
-- renforcer la maîtrise du langage C
-- pratiquer la gestion mémoire (malloc / free)
-- construire des fonctions réutilisables pour le parsing de texte
+- renforcer la maîtrise du **langage C**
+- pratiquer la **gestion mémoire (malloc / free)**
+- développer des **outils réutilisables pour le parsing de texte**
