@@ -47,7 +47,7 @@ char *my_substr(const char *s, int start, int len)
     return (copy);
 }
 
-int main(void)
+/*int main(void)
 {
     const char *str = "ositopaola";
     char *sub;
@@ -59,4 +59,4 @@ int main(void)
     printf("chaîne decoupée : %s\n", sub);
     free(sub);
     return (0);
-}
+}*/
