@@ -77,7 +77,7 @@ char *my_subs (char *line, int start, int len)
 }
 
 
-char *csv_get_field(const char *line, char sep, int field_index)
+char *csv_get_field(char *line, char sep, int field_index)
 {
     int flen;
     int start;
@@ -92,6 +92,14 @@ char *csv_get_field(const char *line, char sep, int field_index)
         return NULL;
     return (field);
 }
+
+/*#include <stdio.h>
+int main(void)
+{
+    char line[]= "paris, bogota, rennes";
+    printf("%s\n", csv_get_field(line,',', 1));
+    return (0);
+}*/
    
   
 
