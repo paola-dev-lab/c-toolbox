@@ -53,17 +53,28 @@ int find_start(char *line, char sep, int field_index)
     return (-1);
 }
 
-/*r *my_subs (char *str, int start, int len)
+char *my_subs (char *line, int start, int len)
 {
    
      char *newf;
      int i;
-     *newf = malloc(sizeof(char) + (len + 1));
+
+    if (line == NULL || start < 0 || len < 0)
+    return NULL;
+   
+    newf = malloc(sizeof(char) * (len + 1));
         if (!newf)
             return NULL;
-        i = 0;
-        while(
-}*/
+    i = 0;
+    while(i < len)
+        {
+            newf[i] = line[start];
+            i++;
+            start++;
+        }
+    newf[i] = '\0';
+    return (newf);
+}
 
 
 char *csv_get_field(const char *line, char sep, int field_index)
@@ -72,12 +83,14 @@ char *csv_get_field(const char *line, char sep, int field_index)
     int f;
     int flen;
     int start;
+  
     
    
     if (line == NULL || field_index < 0)
         return (-1);
     flen = field_len(line, sep, field_index);
     start = find_start(line, sep, field_index);
+    my_subs(line, start, flen);
 }
    
   
