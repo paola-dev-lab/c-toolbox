@@ -1,7 +1,6 @@
 #include <stdlib.h>
 int field_len(char *line, char sep, int field_index)
 {
-    
     int i;
     int fl;
     int f;
@@ -29,15 +28,15 @@ int field_len(char *line, char sep, int field_index)
 
 int find_start(char *line, char sep, int field_index)
 {
-     int start;
      int i;
      int f;
 
+     if (line == NULL || field_index < 0)
+        return (-1);
      i = 0;
      f = 0;
-     start = -1;
-     if (field_index == 0)
-        start = 0;
+    if (field_index == 0)
+        return (field_index);
     else 
     {
         while (line[i])
@@ -46,16 +45,15 @@ int find_start(char *line, char sep, int field_index)
                 f++;
             if (f == field_index)
             {
-                start = i + 1;
-                    break;
+                return (i + 1);
             }
         i++;
         }
     }
-    return (start);
+    return (-1);
 }
 
-char *my_subs *str, int start, int len)
+/*r *my_subs (char *str, int start, int len)
 {
    
      char *newf;
@@ -65,7 +63,7 @@ char *my_subs *str, int start, int len)
             return NULL;
         i = 0;
         while(
-}
+}*/
 
 
 char *csv_get_field(const char *line, char sep, int field_index)
@@ -73,10 +71,14 @@ char *csv_get_field(const char *line, char sep, int field_index)
     int i;
     int f;
     int flen;
+    int start;
+    
    
     if (line == NULL || field_index < 0)
         return (-1);
     flen = field_len(line, sep, field_index);
+    start = find_start(line, sep, field_index);
+}
    
   
 
