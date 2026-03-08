@@ -79,18 +79,18 @@ char *my_subs (char *line, int start, int len)
 
 char *csv_get_field(const char *line, char sep, int field_index)
 {
-    int i;
-    int f;
     int flen;
     int start;
+    char *field;
   
-    
-   
     if (line == NULL || field_index < 0)
-        return (-1);
+        return NULL;
     flen = field_len(line, sep, field_index);
     start = find_start(line, sep, field_index);
-    my_subs(line, start, flen);
+    field = my_subs(line, start, flen);
+    if (!field)
+        return NULL;
+    return (field);
 }
    
   
