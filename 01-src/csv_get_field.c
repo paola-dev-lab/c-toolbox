@@ -64,9 +64,7 @@ char *my_subs (char *line, int start, int len)
             return NULL;
     i = 0;
     while(i < len)
-        {
-            newf[i++] = line[start]++;
-        }
+        newf[i++] = line[start++];
     newf[i] = '\0';
     return (newf);
 }
