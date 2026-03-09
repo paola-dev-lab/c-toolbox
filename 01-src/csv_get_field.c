@@ -59,15 +59,13 @@ char *my_subs (char *line, int start, int len)
     if (line == NULL || start < 0 || len < 0)
     return NULL;
    
-    newf = malloc(sizeof(char) * (len + 1));
+    newf = malloc(len + 1);
         if (!newf)
             return NULL;
     i = 0;
     while(i < len)
         {
-            newf[i] = line[start];
-            i++;
-            start++;
+            newf[i++] = line[start]++;
         }
     newf[i] = '\0';
     return (newf);
