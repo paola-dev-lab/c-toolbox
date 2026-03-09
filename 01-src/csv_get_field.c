@@ -36,10 +36,8 @@ int find_start(char *line, char sep, int field_index)
      i = 0;
      f = 0;
     if (field_index == 0)
-        return (field_index);
-    else 
-    {
-        while (line[i])
+        return (0);
+    while (line[i])
         {
             if(line[i] == sep)
                 f++;
@@ -49,7 +47,6 @@ int find_start(char *line, char sep, int field_index)
             }
         i++;
         }
-    }
     return (-1);
 }
 
