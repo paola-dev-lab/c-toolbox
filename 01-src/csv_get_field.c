@@ -89,8 +89,14 @@ char *csv_get_field(char *line, char sep, int field_index)
 /*#include <stdio.h>
 int main(void)
 {
-    char line[]= "paris, bogota, rennes";
-    printf("%s\n", csv_get_field(line,',', 1));
+    char line[] = "paris, bogota, rennes";
+    char *field;
+    
+    field = csv_get_field(line,',', 1);
+    if (!field)
+        return (1);
+    printf("%s\n", field);
+    free(field); 
     return (0);
 }*/
    
