@@ -76,16 +76,14 @@ char *csv_get_field(char *line, char sep, int field_index)
 {
     int flen;
     int start;
-    char *field;
   
     if (line == NULL || field_index < 0)
         return NULL;
     flen = field_len(line, sep, field_index);
     start = find_start(line, sep, field_index);
-    field = my_subs(line, start, flen);
-    if (!field)
+    if (flen < 0 || start < 0)
         return NULL;
-    return (field);
+    return (my_subs(line, start, flen));
 }
 
 /*#include <stdio.h>
