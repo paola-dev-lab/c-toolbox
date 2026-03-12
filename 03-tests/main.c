@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "csv.h"
 
-char *csv_get_field(const char *line, char sep, int field_index);
 int main(void)
 {   
     char line[] = "Paris, Bogota, New York";
