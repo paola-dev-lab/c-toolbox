@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "csv.h"
 
 char *csv_get_field(char *line, char sep, int field_index)
 {
