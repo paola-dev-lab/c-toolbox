@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "csv.h"
 
 int find_start(char *line, char sep, int field_index)
 {
