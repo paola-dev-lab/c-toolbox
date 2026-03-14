@@ -3,7 +3,8 @@ NAME = csv_program
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I 02-include
 
-SRC = 03-tests/main.c 01-src/CSV_module/*.c
+SRC = 03-tests/main.c \
+      $(wildcard 01-src/CSV_module/*.c)
 
 OBJ = $(SRC:.c=.o)
 
