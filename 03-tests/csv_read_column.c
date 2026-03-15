@@ -14,4 +14,13 @@ int col = atoi(argv[2]);
         printf("Colonne invalide\n");
         return (1);
     }
+
+    FILE *file;
+    file = fopen(argv[1], "r");
+    if (file == NULL)
+    {
+        printf("Erreur ouverture fichier\n");
+        return (1);
+    }
+    printf("fichier ouvert avec succès\n");
 }
