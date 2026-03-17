@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 int main(int    argc, char **argv)
 {
@@ -14,13 +16,27 @@ int col = atoi(argv[2]);
         printf("Colonne invalide\n");
         return (1);
     }
-
-    FILE *file;
+    int fd;
+    fd = open(argv[1], O_RDONLY);
+    if (fd < 0)
+    {
+        write(2, "erreur\n", 8);
+    }
+    char    buffer[1000];
+    int bytes_read;
+    bytes_read = read(fd, buffer, 999);
+    if (bytes_read < 0)
+    {
+        write(2, "erreur lecture\n", 16);
+        return (1);
+    }
+    buffer[bytes_read] = '\0';
+   /* FILE *file;
     file = fopen(argv[1], "r");
     if (file == NULL)
     {
         printf("Erreur ouverture fichier\n");
         return (1);
     }
-    printf("fichier ouvert avec succès\n");
+    printf("fichier ouvert avec succès\n"); */
 }
