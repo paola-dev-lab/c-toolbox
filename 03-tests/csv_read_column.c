@@ -20,7 +20,8 @@ int col = atoi(argv[2]);
     fd = open(argv[1], O_RDONLY);
     if (fd < 0)
     {
-        write(2, "erreur\n", 8);
+        write(2, "erreur d'ouverture de fichier\n", 26);
+	return (1);
     }
     char    buffer[1000];
     int bytes_read;
