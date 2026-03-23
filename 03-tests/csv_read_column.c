@@ -31,13 +31,12 @@ int col = atoi(argv[2]);
         write(2, "erreur lecture\n", 16);
         return (1);
     }
+    write(1, buffer, bytes_read);
     buffer[bytes_read] = '\0';
-   /* FILE *file;
-    file = fopen(argv[1], "r");
-    if (file == NULL)
-    {
-        printf("Erreur ouverture fichier\n");
-        return (1);
-    }
-    printf("fichier ouvert avec succès\n"); */
+    int	index;
+    index = detect_line(buffer);
+    	if(index >= 0)
+		write(1, buffer, index + 1);
+		
+
 }
