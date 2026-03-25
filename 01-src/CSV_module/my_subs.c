@@ -12,7 +12,7 @@ char *my_subs (char *line, int start, int len)
         if (!newf)
             return NULL;
     i = 0;
-    while(i < len)
+    while(i < len && line[start + 1] != 0)
         newf[i++] = line[start++];
     newf[i] = '\0';
     return (newf);
