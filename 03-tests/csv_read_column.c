@@ -37,6 +37,8 @@ int col = atoi(argv[2]);
     index = detect_line(buffer);
     	if(index >= 0)
 		write(1, buffer, index + 1);
+	char *line = mysubs(buffer, 0, index);
+
 		
 
 }
