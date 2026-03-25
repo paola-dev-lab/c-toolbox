@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include "csv.h"
 
 int main(int    argc, char **argv)
 {
@@ -37,8 +38,15 @@ int col = atoi(argv[2]);
     index = detect_line(buffer);
     	if(index >= 0)
 		write(1, buffer, index + 1);
-	char *line = mysubs(buffer, 0, index);
-
-		
+	char *line = my_subs(buffer, 0, index);
+	char *field = csv_get_field(line, ',', col);
+	if (field == NULL)
+		return (-1);
+	int	i;
+	i = 0;
+	while(field[i] != '\0')
+		i++;
+	write(1, field, i);
+	write(1, '\n', 1);	
 
 }
