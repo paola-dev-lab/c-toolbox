@@ -47,6 +47,6 @@ int col = atoi(argv[2]);
 	while(field[i] != '\0')
 		i++;
 	write(1, field, i);
-	write(1, '\n', 1);	
+	write(1, "\n", 1);	
 
 }
