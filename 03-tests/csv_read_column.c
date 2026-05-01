@@ -42,10 +42,7 @@ int col = atoi(argv[2]);
 	char *field = csv_get_field(line, ',', col);
 	if (field == NULL)
 		return (-1);
-	int	i;
-	i = 0;
-	while(field[i] != '\0')
-		i++;
+	my_strlen(field);
 	write(1, field, i);
 	write(1, "\n", 1);	
 
