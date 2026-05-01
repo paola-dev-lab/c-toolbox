@@ -36,14 +36,18 @@ int col = atoi(argv[2]);
     buffer[bytes_read] = '\0';
     int	index;
     index = detect_line(buffer);
-    	if(index >= 0)
-		write(1, buffer, index + 1);
-	char *line = my_subs(buffer, 0, index);
-	char *field = csv_get_field(line, ',', col);
-	if (field == NULL)
-		return (-1);
+    		if(index >= 0)
+			write(1, buffer, index + 1);
+		char *line = my_subs(buffer, 0, index);
+		char *field = csv_get_field(line, ',', col);
+		if (field == NULL)
+			return (-1);
 	my_strlen(field);
 	write(1, field, i);
-	write(1, "\n", 1);	
+	write(1, "\n", 1);
+	int start;
+	start = index + 1;
+	detect_line(buffer + start);
 
+	
 }
