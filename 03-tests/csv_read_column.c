@@ -22,7 +22,7 @@ int col = atoi(argv[2]);
     if (fd < 0)
     {
         write(2, "erreur d'ouverture de fichier\n", 26);
-	return (1);
+		return (1);
     }
     char    buffer[1000];
     int bytes_read;
@@ -32,22 +32,32 @@ int col = atoi(argv[2]);
         write(2, "erreur lecture\n", 16);
         return (1);
     }
-    write(1, buffer, bytes_read);
     buffer[bytes_read] = '\0';
     int	index;
-    index = detect_line(buffer);
-    		if(index >= 0)
-			write(1, buffer, index + 1);
-		char *line = my_subs(buffer, 0, index);
-		char *field = csv_get_field(line, ',', col);
-		if (field == NULL)
-			return (-1);
-	my_strlen(field);
+	char *line;
+	char *field;
+	int i;
+	int start;
+	start = 0;
+	while (buffer[start] != '\0')
+	{
+	index = detect_line(buffer + start);
+	if (index < 0)
+		break;
+	line = my_subs(buffer, start, index);
+	field = csv_get_field(line, ',', col);
+	if (field == NULL)
+		{
+			free (line);
+			return (1);
+		}
+	i = my_strlen(field);
 	write(1, field, i);
 	write(1, "\n", 1);
-	int start;
-	start = index + 1;
-	detect_line(buffer + start);
 
+	free(field);
+	free(line);
+	start = start + index + 1;
+	}
 	
 }
