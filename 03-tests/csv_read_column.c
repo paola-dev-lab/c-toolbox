@@ -59,5 +59,6 @@ int col = atoi(argv[2]);
 	free(line);
 	start = start + index + 1;
 	}
-	
+	close(fd);
+	return(0);	
 }
