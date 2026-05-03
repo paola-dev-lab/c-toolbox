@@ -24,41 +24,46 @@ int col = atoi(argv[2]);
         write(2, "erreur d'ouverture de fichier\n", 26);
 		return (1);
     }
+
     char    buffer[1000];
     int bytes_read;
-    bytes_read = read(fd, buffer, 999);
-    if (bytes_read < 0)
-    {
-        write(2, "erreur lecture\n", 16);
-        return (1);
-    }
-    buffer[bytes_read] = '\0';
     int	index;
 	char *line;
 	char *field;
 	int i;
 	int start;
-	start = 0;
-	while (buffer[start] != '\0')
-	{
-	index = detect_line(buffer + start);
-	if (index < 0)
-		break;
-	line = my_subs(buffer, start, index);
-	field = csv_get_field(line, ',', col);
-	if (field == NULL)
-		{
-			free (line);
-			return (1);
-		}
-	i = my_strlen(field);
-	write(1, field, i);
-	write(1, "\n", 1);
 
-	free(field);
-	free(line);
-	start = start + index + 1;
+	while((bytes_read = read(fd, buffer, 999) > 0)
+	{
+    	buffer[bytes_read] = '\0';
+		start = 0;
+		while (buffer[start] != '\0')
+		{
+    		if (bytes_read < 0)
+			index = detect_line(buffer + start);
+				break;
+			line = my_subs(buffer, start, index);
+			field = csv_get_field(line, ',', col);
+			if (field == NULL)
+			{
+				free (line);
+				clode(fd);
+				return (1);
+			}
+			write(1, field, my strlen(field));
+			write(1, "\n", 1);
+			free(field);
+			free(line);
+			start = start + index + 1;
+		}
+	}
+
+	if (bytes_read < 0)
+	{
+		write(2, "Erreur\n", 15);
+		close(fd);
+		return(1);	
 	}
 	close(fd);
-	return(0);	
+	return(0);
 }
